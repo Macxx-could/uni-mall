@@ -1,66 +1,29 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-		<Space direction="vertical">
-			<Space wrap>
-				<Button>Default</Button>
-				<Button type="primary">Primary</Button>
-				<Button type="dashed">Dashed</Button>
-				<Button type="text">Text</Button>
-			</Space>
-			<Space wrap>
-				<Button type="info">Info</Button>
-				<Button type="success">Success</Button>
-				<Button type="warning">Warning</Button>
-				<Button type="error">Error</Button>
-			</Space>
-		</Space>
+		<!-- 顶部导航栏 -->
+		<MyTabs />
+		<!-- 底部导航栏 -->
+		<MyTabBar />
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
-
-		},
-		methods: {
-
-		}
-	}
+<script setup>
+	import {
+		ref
+	} from 'vue'
+	import MyTabBar from '../../components/myTabBar.vue' // 底部导航栏
+	import MyTabs from '../../components/myTabs.vue' // 顶部导航栏
+	// 当前激活的tabPane
+	const tabPane = ref("推荐")
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+		background-color: #f4f4f4;
+		// 这里是减去了底部导航栏的高度
+		min-height: calc(100vh - 3.125rem);
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
 
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
 
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
 	}
 </style>
